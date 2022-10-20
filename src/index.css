@@ -94,17 +94,17 @@ main {
 }
 
 /* DICE */
-/* .dice {  
+.dice {  
   padding: 4px;  
   background-color: tomato;  
-  width: 104px;  
-  height: 104px;  
+  width: 84px;  
+  height: 84px;  
   border-radius: 10%;
 }
 .dot {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background-color:white;
 }
@@ -112,4 +112,24 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  } */
+}
+/* second */
+.second-face {
+  display: flex;
+  justify-content : space-between;
+}
+.second-face .dot:nth-of-type(2) {
+  align-self: flex-end;
+}
+.second-face .dot:nth-of-type(3) {
+  align-self: flex-end;
+}
+.second-face .dot:nth-of-type(2) {
+  align-self: center;
+}
+.third-face .dot:nth-of-type(1) {
+  align-self :flex-end;
+}
+.third-face .dot:nth-of-type(2) {
+  align-self :center;
+}
