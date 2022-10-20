@@ -92,24 +92,3 @@ main {
   border-radius: 50%;
   padding: 30px 20px;
 }
-
-/* DICE */
-/* .dice {  
-  padding: 4px;  
-  background-color: tomato;  
-  width: 104px;  
-  height: 104px;  
-  border-radius: 10%;
-}
-.dot {
-  display: block;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color:white;
-}
-.first-face {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  } */

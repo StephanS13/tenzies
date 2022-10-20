@@ -86,10 +86,6 @@ function App() {
         {tenzies ? "New Game" : "Roll"}
       </button>
       <Counter count={count} />
-
-      {/* <div className="dice first-face">
-        <span className="dot"> </span>
-      </div> */}
     </main>
   );
 }
