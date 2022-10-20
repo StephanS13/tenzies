@@ -3,6 +3,7 @@ import Die from './Components/Die';
 import Counter from './Components/Counter';
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
+import Timer from './Components/Timer';
 
 
 function App() {
@@ -10,20 +11,41 @@ function App() {
   const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
   const [count, setCount] = useState(0)
+  const [time, setTime] = useState(0)
+  const [isActive, setIsActive] = useState(false);
 
+  // Stores data
+  useEffect(() => {
+    localStorage.setItem("score", count)
+    localStorage.setItem("time", time)
+  },[tenzies])
 
+  // Sets timer
+  useEffect(() => {
+    let interval = null;
+  
+    if (isActive) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10);
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isActive]);
+
+  // Sets Tenzies
   useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
     const singleValue = dice[0].value
     const allSameValue = dice.every(die => die.value === singleValue)
     if (allHeld && allSameValue) {
       setTenzies(true)
+      setIsActive(false)
     }
   }, [dice])
-
-  function initializeCount() {
-    setCount()
-  }
 
 
   function generateNewDie() {
@@ -47,6 +69,7 @@ function App() {
       setTenzies(false)
       setDice(allNewDice())
       setCount(0)
+      setTime(0)
     } else {
       setDice(oldDice => oldDice.map(die => (
         die.isHeld ?
@@ -54,6 +77,7 @@ function App() {
         generateNewDie()
       )))
       setCount(count + 1)
+      setIsActive(true)
     }
   }
 
@@ -63,6 +87,7 @@ function App() {
       { ...die, isHeld: !die.isHeld } :
       die
     )))
+    setIsActive(true)
   }
 
   const diceElements = dice.map(die => (
@@ -77,15 +102,22 @@ function App() {
   return (
     <main>
       {tenzies && <Confetti />}
+
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+
+      <div className="stop-watch">
+        <Timer time={time} />
+        <Counter count={count} />
+      </div>
+           
       <div className="dice-container">
         {diceElements}
       </div>
+
       <button className='roll-dice' onClick={rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
-      <Counter count={count} />
     </main>
   );
 }

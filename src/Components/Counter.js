@@ -4,8 +4,8 @@ export default function Counter(props) {
 
   return (
     <div className='counter-container'>
-      <div>Attempts:</div>
-      <h2>{props.count}</h2>
+      <h2>Moves:</h2>
+      <h2 className='counter'>{props.count}</h2>
     </div>
   )
 }
