@@ -4,6 +4,7 @@ import Counter from './Components/Counter';
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
 import Timer from './Components/Timer';
+import Score from './Components/Score';
 
 
 function App() {
@@ -13,12 +14,18 @@ function App() {
   const [count, setCount] = useState(0)
   const [time, setTime] = useState(0)
   const [isActive, setIsActive] = useState(false);
+  const [results, setResults] = useState('')
 
   // Stores data
   useEffect(() => {
     localStorage.setItem("score", count)
     localStorage.setItem("time", time)
   },[tenzies])
+
+  // Set results for final score
+  useEffect(() => {
+    setResults(localStorage.getItem("time", "score"))
+  }, [tenzies])
 
   // Sets timer
   useEffect(() => {
@@ -36,7 +43,7 @@ function App() {
     };
   }, [isActive]);
 
-  // Sets Tenzies
+  // Sets Tenzies & Stops timer
   useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
     const singleValue = dice[0].value
@@ -102,6 +109,7 @@ function App() {
   return (
     <main>
       {tenzies && <Confetti />}
+      {tenzies && <Score results={results} />}
 
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
