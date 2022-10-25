@@ -112,3 +112,17 @@ main {
 .mili-sec{
 	color: #0B2434;
 }
+
+/* RESULTS */
+.results-container {
+  display: flex;
+  gap: 50px;
+}
+
+.results-container h1 {
+  color: #0B2434;
+}
+
+.results-container span {
+  color: #e42a2a;
+}

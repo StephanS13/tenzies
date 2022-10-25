@@ -14,17 +14,19 @@ function App() {
   const [count, setCount] = useState(0)
   const [time, setTime] = useState(0)
   const [isActive, setIsActive] = useState(false);
-  const [results, setResults] = useState('')
+  const [timeResults, setTimeResults] = useState('')
+  const [moveResults, setMoveResults] = useState('')
 
   // Stores data
   useEffect(() => {
-    localStorage.setItem("score", count)
+    localStorage.setItem("moves", count)
     localStorage.setItem("time", time)
-  },[tenzies])
+  }, [tenzies])
 
   // Set results for final score
   useEffect(() => {
-    setResults(localStorage.getItem("time", "score"))
+    setTimeResults(JSON.parse(localStorage.getItem("time")))
+    setMoveResults(localStorage.getItem("moves"))
   }, [tenzies])
 
   // Sets timer
@@ -109,7 +111,7 @@ function App() {
   return (
     <main>
       {tenzies && <Confetti />}
-      {tenzies && <Score results={results} />}
+      {tenzies && <Score timeResults={timeResults} moveResults={moveResults}/>}
 
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
