@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Die from './Components/Die';
-import Counter from './Components/Counter';
 import { nanoid } from 'nanoid'
 import Confetti from 'react-confetti'
 
@@ -80,7 +79,6 @@ function App() {
       <button className='roll-dice' onClick={rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
-      <Counter count={count} />
     </main>
   );
 }

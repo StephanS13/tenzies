@@ -69,7 +69,7 @@ main {
   width: 150px;
   border: none;
   border-radius: 6px;
-  background-color: #5035FF;
+  background-color: #008e89;
   color: white;
   font-size: 1.2rem;
   font-family: 'Karla', sans-serif;
@@ -93,20 +93,20 @@ main {
   padding: 30px 20px;
 }
 
-/* DICE */
+/* DICES */
+/* first */
 .dice {  
   padding: 4px;  
-  background-color: tomato;  
-  width: 84px;  
-  height: 84px;  
+  width: 50px;  
+  height: 50px;  
   border-radius: 10%;
 }
 .dot {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color:white;
+  background-color: black;
 }
 .first-face {
   display: flex;
@@ -121,15 +121,38 @@ main {
 .second-face .dot:nth-of-type(2) {
   align-self: flex-end;
 }
-.second-face .dot:nth-of-type(3) {
-  align-self: flex-end;
-}
-.second-face .dot:nth-of-type(2) {
-  align-self: center;
-}
-.third-face .dot:nth-of-type(1) {
-  align-self :flex-end;
+/* third */
+.third-face {
+  display: flex;
+  justify-content : space-between;
 }
 .third-face .dot:nth-of-type(2) {
-  align-self :center;
+  align-self: center;
 }
+.third-face .dot:nth-of-type(3) {
+  align-self: flex-end;
+}
+/* fourth */
+.fourth-face {
+  display: flex;
+  justify-content : space-between;
+}
+.fourth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* fifth */
+.fifth-face {
+  display: flex;
+  justify-content : space-between;
+}
+.fifth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.fifth-face .column:nth-of-type(2) {
+  justify-content: center;
+}
+/* sixth */
